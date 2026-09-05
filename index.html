@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Turismo de Piribebuy 🇵🇾</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7f5;
+      color: #17251d;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 35, 22, 0.94);
+      backdrop-filter: blur(10px);
+      padding: 14px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav .logo span {
+      color: #7ee787;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #7ee787;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 50px;
+
+      background:
+        linear-gradient(rgba(5, 35, 20, 0.72), rgba(5, 35, 20, 0.72)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 82px);
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #7ee787;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      background: #65d878;
+      color: #092111;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    /* SECCIONES */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #155c2e;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #607267;
+    }
+
+    /* INTRO */
+
+    .intro {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .highlight {
+      background: #e2f6e6;
+      border-left: 5px solid #35a853;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 10px;
+    }
+
+    /* TARJETAS */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.14);
+    }
+
+    .card-image {
+      height: 190px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .card-content h3 {
+      color: #155c2e;
+      margin-bottom: 8px;
+      font-size: 23px;
+    }
+
+    /* HISTORIA */
+
+    .history {
+      background: #eaf5ec;
+    }
+
+    .history-box {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+    }
+
+    .history-box p {
+      margin-bottom: 15px;
+    }
+
+    /* CULTURA */
+
+    .culture-item {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      border-top: 4px solid #35a853;
+    }
+
+    .culture-item h3 {
+      color: #155c2e;
+      margin-bottom: 10px;
+    }
+
+    /* IMPORTANCIA */
+
+    .importance {
+      background: linear-gradient(135deg, #0c3b20, #176b37);
+      color: white;
+    }
+
+    .importance .section-title h2,
+    .importance .section-title p {
+      color: white;
+    }
+
+    .importance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .importance-box {
+      padding: 25px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    .importance-box h3 {
+      margin-bottom: 8px;
+    }
+
+    /* GUÍA */
+
+    .guide {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .guide-step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 25px;
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    }
+
+    .number {
+      min-width: 45px;
+      height: 45px;
+      background: #35a853;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    /* CONCLUSIÓN */
+
+    .conclusion {
+      text-align: center;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .conclusion p {
+      font-size: 19px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #07180e;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer strong {
+      color: #7ee787;
+    }
+
+    /* BOTÓN ARRIBA */
+
+    #topBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: #35a853;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      z-index: 999;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 12px 15px;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 65px 5%;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .guide-step {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="logo">
+      🇵🇾 <span>Piribebuy</span> Turismo
+    </div>
+
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#turismo">Turismo</a></li>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#cultura">Cultura</a></li>
+      <li><a href="#guia">Guía</a></li>
+      <li><a href="#conclusion">Conclusión</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- INICIO -->
+
+  <header class="hero" id="inicio">
+    <div class="hero-content">
+
+      <h1>
+        Turismo de <span>Piribebuy</span>
+      </h1>
+
+      <p>
+        Una guía para descubrir la naturaleza, cultura e historia
+        de una de las ciudades más tradicionales del Paraguay. 🇵🇾
+      </p>
+
+      <a href="#turismo" class="btn">
+        Explorar Piribebuy ↓
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- INTRODUCCIÓN -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>🌎 Conociendo Piribebuy</h2>
+      <p>Una mirada general a la ciudad</p>
+    </div>
+
+    <div class="intro">
+
+      <p>
+        Piribebuy es una ciudad del departamento de Cordillera,
+        Paraguay. Se caracteriza por su riqueza histórica,
+        cultural y natural, convirtiéndose en un lugar atractivo
+        para quienes desean conocer diferentes aspectos de nuestro país.
+      </p>
+
+      <div class="highlight">
+        <strong>💡 ¿Por qué visitarla?</strong><br>
+        Porque combina naturaleza, historia, cultura y tradiciones
+        paraguayas en un mismo destino.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LUGARES TURÍSTICOS -->
+
+  <section id="turismo">
+
+    <div class="section-title">
+      <h2>📍 Lugares turísticos</h2>
+      <p>Algunos atractivos que podés conocer</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-image"
+          style="background-image:url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80');">
+        </div>
+
+        <div class="card-content">
+          <h3>💦 Saltos y naturaleza</h3>
+
+          <p>
+            Los alrededores de Piribebuy cuentan con paisajes
+            naturales y cursos de agua que atraen a visitantes
+            que buscan disfrutar de la naturaleza.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-image"
+          style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80');">
+        </div>
+
+        <div class="card-content">
+
+          <h3>⛪ Iglesia</h3>
+
+          <p>
+            La iglesia y el centro histórico forman parte del
+            patrimonio cultural que permite conocer más sobre
+            la historia y las tradiciones de la ciudad.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-image"
+          style="background-image:url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=80');">
+        </div>
+
+        <div class="card-content">
+
+          <h3>🌳 Paisajes naturales</h3>
+
+          <p>
+            Sus paisajes y zonas verdes ofrecen espacios ideales
+            para descansar, recorrer y disfrutar del entorno natural.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-image"
+          style="background-image:url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=900&q=80');">
+        </div>
+
+        <div class="card-content">
+
+          <h3>🏛️ Patrimonio histórico</h3>
+
+          <p>
+            Piribebuy posee lugares relacionados con importantes
+            acontecimientos de la historia paraguaya.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HISTORIA -->
+
+  <section class="history" id="historia">
+
+    <div class="section-title">
+      <h2>📜 Historia</h2>
+      <p>Un patrimonio que forma parte de su identidad</p>
+    </div>
+
+    <div class="history-box">
+
+      <p>
+        Piribebuy posee una importante relación con la historia
+        del Paraguay, especialmente con acontecimientos ocurridos
+        durante la Guerra de la Triple Alianza.
+      </p>
+
+      <p>
+        La ciudad es recordada por la defensa de Piribebuy,
+        uno de los episodios históricos más conocidos de la zona.
+      </p>
+
+      <p>
+        Actualmente, su historia forma parte de la identidad
+        cultural de sus habitantes y también representa un
+        atractivo para quienes desean conocer el pasado del país.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CULTURA -->
+
+  <section id="cultura">
+
+    <div class="section-title">
+
+      <h2>🧵 Cultura y tradiciones</h2>
+
+      <p>
+        Costumbres que mantienen viva la identidad paraguaya
+      </p>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="culture-item">
+
+        <h3>🧶 Artesanía</h3>
+
+        <p>
+          La elaboración de tejidos y otras artesanías tradicionales
+          representa una parte importante de la cultura paraguaya.
+        </p>
+
+      </div>
+
+
+      <div class="culture-item">
+
+        <h3>🎵 Tradiciones</h3>
+
+        <p>
+          Las fiestas, músicas, comidas y costumbres locales
+          ayudan a conservar la identidad cultural de la comunidad.
+        </p>
+
+      </div>
+
+
+      <div class="culture-item">
+
+        <h3>🍲 Gastronomía</h3>
+
+        <p>
+          La gastronomía paraguaya también forma parte de la
+          experiencia turística, con comidas tradicionales
+          como la sopa paraguaya y la chipa.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- IMPORTANCIA DEL TURISMO -->
+
+  <section class="importance">
+
+    <div class="section-title">
+
+      <h2>⭐ Importancia del turismo</h2>
+
+      <p>
+        ¿Por qué es importante desarrollar el turismo?
+      </p>
+
+    </div>
+
+
+    <div class="importance-grid">
+
+      <div class="importance-box">
+
+        <h3>💰 Economía</h3>
+
+        <p>
+          Genera oportunidades para comercios,
+          emprendedores y trabajadores locales.
+        </p>
+
+      </div>
+
+
+      <div class="importance-box">
+
+        <h3>🏛️ Patrimonio</h3>
+
+        <p>
+          Ayuda a valorar y conservar los lugares
+          históricos y culturales.
+        </p>
+
+      </div>
+
+
+      <div class="importance-box">
+
+        <h3>🌱 Naturaleza</h3>
+
+        <p>
+          Promueve el interés por proteger los
+          paisajes y espacios naturales.
+        </p>
+
+      </div>
+
+
+      <div class="importance-box">
+
+        <h3>🇵🇾 Cultura</h3>
+
+        <p>
+          Permite compartir las tradiciones
+          paraguayas con visitantes.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GUÍA ESPECÍFICA -->
+
+  <section id="guia">
+
+    <div class="section-title">
+
+      <h2>🧭 Guía para visitar Piribebuy</h2>
+
+      <p>
+        Una pequeña guía para aprovechar el recorrido
+      </p>
+
+    </div>
+
+
+    <div class="guide">
+
+      <div class="guide-step">
+
+        <div class="number">1</div>
+
+        <div>
+
+          <h3>📍 Conocé el centro</h3>
+
+          <p>
+            Comenzá recorriendo el centro de la ciudad
+            y observando sus lugares históricos y culturales.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="guide-step">
+
+        <div class="number">2</div>
+
+        <div>
+
+          <h3>🌳 Visitá la naturaleza</h3>
+
+          <p>
+            Explorá los atractivos naturales de la zona
+            y disfrutá de sus paisajes.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="guide-step">
+
+        <div class="number">3</div>
+
+        <div>
+
+          <h3>🧵 Conocé sus tradiciones</h3>
+
+          <p>
+            Descubrí las artesanías, comidas y costumbres
+            que forman parte de la identidad local.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="guide-step">
+
+        <div class="number">4</div>
+
+        <div>
+
+          <h3>📸 Cuidá el lugar</h3>
+
+          <p>
+            Respetá la naturaleza, los espacios públicos
+            y el patrimonio cultural durante tu visita.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONCLUSIÓN -->
+
+  <section id="conclusion">
+
+    <div class="section-title">
+
+      <h2>✅ Conclusión</h2>
+
+    </div>
+
+
+    <div class="conclusion">
+
+      <p>
+        Piribebuy es una ciudad con mucha historia, cultura y naturaleza.
+        Sus atractivos turísticos la convierten en un lugar especial para
+        visitar. Además, el turismo es importante porque ayuda a la economía
+        local y a valorar y conservar su patrimonio.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>
+      🇵🇾 <strong>Turismo de Piribebuy</strong>
+    </p>
+
+    <p>
+      Trabajo escolar sobre turismo, cultura, historia y naturaleza.
+    </p>
+
+    <br>
+
+    <p>
+      Hecho con ❤️ para conocer más de Paraguay.
+    </p>
+
+  </footer>
+
+
+  <!-- BOTÓN ARRIBA -->
+
+  <button id="topBtn" onclick="window.scrollTo(0,0)">
+    ↑
+  </button>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener("scroll", function() {
+
+      if (window.scrollY > 400) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+
+    });
+
+  </script>
+
+</body>
+  </html>
+
